@@ -1,5 +1,8 @@
 import React from "react";
 import ThemeToggle from "../components/ThemeToggle";
+import StartBackground from "../components/StartBackground";
+import Navbar from "../components/Navbar";
+import HeroSection from "../components/HeroSection";
 
 const Home = () => {
   return (
@@ -7,10 +10,14 @@ const Home = () => {
       {/* theme toggle */}
       <ThemeToggle></ThemeToggle>
       {/* background effects */}
+      <StartBackground></StartBackground>
       {/* navbar */}
+      <Navbar></Navbar>
       {/* main content */}
+      <main>
+        <HeroSection></HeroSection>
+      </main>
       {/* footer */}
-      Home
     </main>
   );
 };
