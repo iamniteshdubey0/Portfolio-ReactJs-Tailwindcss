@@ -4,6 +4,7 @@ import StartBackground from "../components/StartBackground";
 import Navbar from "../components/Navbar";
 import HeroSection from "../components/HeroSection";
 import AboutSection from "../components/AboutSection";
+import SkillsSection from "../components/SkillsSection";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <main>
         <HeroSection></HeroSection>
         <AboutSection></AboutSection>
+        <SkillsSection></SkillsSection>
       </main>
       {/* footer */}
     </main>
