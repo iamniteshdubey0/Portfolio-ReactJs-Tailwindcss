@@ -1,51 +1,21 @@
 import { ArrowRight, ExternalLink, Github } from "lucide-react";
-import React from "react";
-
-const projects = [
-  {
-    id: 1,
-    title: "project-1",
-    desc: "a beautyfull app",
-    image: "/projects/p1.png",
-    tags: ["ReactJs", "Tailwindcss"],
-    demoUrl: "#",
-    github: "#",
-  },
-  {
-    id: 2,
-    title: "project-2",
-    desc: "a beautyfull app",
-    image: "/projects/p2.png",
-    tags: ["ReactJs", "Tailwindcss"],
-    demoUrl: "#",
-    github: "#",
-  },
-  {
-    id: 3,
-    title: "project-3",
-    desc: "a beautyfull app",
-    image: "/projects/p3.png",
-    tags: ["ReactJs", "Tailwindcss"],
-    demoUrl: "#",
-    github: "#",
-  },
-];
+import { projects } from "../constants/constants";
+import SectionHeading from "./SectionHeading";
 
 const ProjectSection = () => {
   return (
     <section id="projects" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Featured <span className="text-primary">Projects</span>
-        </h2>
+        <SectionHeading
+          title={projects.section.title}
+          label={projects.section.label}
+        />
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-          ducimus sunt fuga laborum! Corrupti incidunt, itaque molestiae libero
-          quibusdam nisi.
+          {projects.section.desc}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, key) => (
+          {projects.myProjects.map((project, key) => (
             <div
               key={key}
               className="group bg-card overflow-hidden rounded-lg shadow-xs card-hover"

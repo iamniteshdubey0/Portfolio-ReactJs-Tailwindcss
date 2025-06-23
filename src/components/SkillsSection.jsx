@@ -1,40 +1,24 @@
 import React, { useState } from "react";
 import { cn } from "../lib/utils";
-
-const skills = [
-  { name: "html/css", level: 95, category: "frontend" },
-  { name: "javascript", level: 80, category: "frontend" },
-  { name: "React", level: 70, category: "frontend" },
-  { name: "Tailwind CSS", level: 80, category: "frontend" },
-
-  { name: "html/css", level: 95, category: "backend" },
-  { name: "javascript", level: 80, category: "backend" },
-  { name: "React", level: 70, category: "backend" },
-  { name: "Tailwind CSS", level: 80, category: "backend" },
-
-  { name: "html/css", level: 95, category: "tools" },
-  { name: "javascript", level: 80, category: "tools" },
-  { name: "React", level: 70, category: "tools" },
-  { name: "Tailwind CSS", level: 80, category: "tools" },
-];
-
-const categories = ["all", "frontend", "backend", "tools"];
+import { skills } from "../constants/constants";
+import SectionHeading from "./SectionHeading";
 
 const SkillsSection = () => {
   const [activeCategory, setActiveCategory] = useState("all");
-  const filteredSkills = skills.filter(
+  const filteredSkills = skills.mySkills.filter(
     (skill) => activeCategory === "all" || skill.category === activeCategory
   );
 
   return (
     <section id="skills" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          My <span className="text-primary">Skills</span>
-        </h2>
+        <SectionHeading
+          title={skills.section.title}
+          label={skills.section.label}
+        />
 
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category, key) => (
+          {skills.categories.map((category, key) => (
             <button
               key={key}
               className={cn(

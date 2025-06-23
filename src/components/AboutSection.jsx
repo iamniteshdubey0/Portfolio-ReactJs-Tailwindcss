@@ -1,32 +1,27 @@
-import { Briefcase, Code, User } from "lucide-react";
-import React from "react";
+import { about } from "../constants/constants";
+import SectionHeading from "./SectionHeading";
 
 const AboutSection = () => {
   return (
     <section id="about" className="py-24 px-4 relative">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          About <span className="text-primary">Me</span>
-        </h2>
+        <SectionHeading
+          title={about.section.title}
+          label={about.section.label}
+        />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">passanate Wbedeveloper</h3>
-            <p className="text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-              dicta! Saepe, iste cum natus itaque quasi quam quae eos ratione.
-            </p>
-            <p className="text-muted-foreground">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae,
-              dicta! Saepe, iste cum natus itaque quasi quam quae eos ratione.
-            </p>
+            <h3 className="text-2xl font-semibold">{about.intro.title}</h3>
+            <p className="text-muted-foreground">{about.intro.desc1}</p>
+            <p className="text-muted-foreground">{about.intro.desc2}</p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 justify-center">
               <a href="#contact" className="cosmic-button">
                 Get In Touch
               </a>
               <a
-                href="#contact"
+                href={about.intro.resumeLink}
                 className="px-6 py-2 rounded-full border border-primary text-primary hover:bg-primary/10 transition-colors duration-300"
               >
                 Download CV
@@ -35,51 +30,19 @@ const AboutSection = () => {
           </div>
 
           <div className="grid grid-cols-1 gap-6">
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Code className="h-6 w-6 text-primary"></Code>
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus, exercitationem placeat illo similique molestias
-                    deleniti.
-                  </p>
+            {about.work.map((item, key) => (
+              <div key={key} className="gradient-border p-6 card-hover">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 rounded-full bg-primary/10">
+                    {item.icon}
+                  </div>
+                  <div className="text-left">
+                    <h4 className="font-semibold text-lg">{item.title}</h4>
+                    <p className="text-muted-foreground">{item.desc}</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <User className="h-6 w-6 text-primary"></User>
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus, exercitationem placeat illo similique molestias
-                    deleniti.
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="gradient-border p-6 card-hover">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Briefcase className="h-6 w-6 text-primary"></Briefcase>
-                </div>
-                <div className="text-left">
-                  <h4 className="font-semibold text-lg"> Web Development</h4>
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Accusamus, exercitationem placeat illo similique molestias
-                    deleniti.
-                  </p>
-                </div>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

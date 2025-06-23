@@ -1,16 +1,10 @@
 import React, { useState } from "react";
-import {
-  Github,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Phone,
-  Send,
-  Twitter,
-} from "lucide-react";
+import { Send } from "lucide-react";
 import { cn } from "../lib/utils";
 import { useToast } from "@/hooks/use-toast";
+import SectionHeading from "./SectionHeading";
+
+import { contact } from "../constants/constants";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -32,78 +26,47 @@ const ContactSection = () => {
   return (
     <section id="contact" className="py-24 px-4 relative bg-secondary/30">
       <div className="container mx-auto max-w-5xl">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">
-          Get In <span className="text-primary">Touch</span>
-        </h2>
+        <SectionHeading
+          title={contact.section.title}
+          label={contact.section.label}
+        />
         <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis
-          ducimus sunt fuga laborum! Corrupti incidunt, itaque molestiae libero
-          quibusdam nisi.
+          {contact.section.desc}
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <h3 className="text-3xl font-semibold mb-6">Conatct Information</h3>
+            <h3 className="text-3xl font-semibold mb-6">
+              {contact.info.title}
+            </h3>
 
             <div className="space-y-6 justify-center">
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Mail className="h-6 w-6 text-primary"></Mail>
+              {contact.info.data.map((item, key) => (
+                <div key={key} className="flex items-start space-x-4">
+                  <div className="p-3 rounded-full bg-primary/10">
+                    {item.icon}
+                  </div>
+                  <div>
+                    <h4 className="font-medium">{item.label}</h4>
+                    <a
+                      href="mailto"
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {item.source}
+                    </a>
+                  </div>
                 </div>
-                <div className="">
-                  <h4 className="font-medium">Email</h4>
-                  <a
-                    href="mailto"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    gmail.com
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <Phone className="h-6 w-6 text-primary"></Phone>
-                </div>
-                <div className="">
-                  <h4 className="font-medium">Phone</h4>
-                  <a
-                    href="tel:"
-                    className="text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    1123456789
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start space-x-4">
-                <div className="p-3 rounded-full bg-primary/10">
-                  <MapPin className="h-6 w-6 text-primary"></MapPin>
-                </div>
-                <div className="">
-                  <h4 className="font-medium">Location</h4>
-                  <a className="text-muted-foreground hover:text-primary transition-colors">
-                    ghar pe
-                  </a>
-                </div>
-              </div>
+              ))}
             </div>
 
             <div className="pt-8">
-              <h4 className="font-medium mb-4">Connect With Me</h4>
+              <h4 className="font-medium mb-4">{contact.social.title}</h4>
               <div className="flex space-x-4 justify-center">
-                <a href="" className="" target="_blank">
-                  <Linkedin></Linkedin>
-                </a>
-                <a href="" className="" target="_blank">
-                  <Instagram></Instagram>
-                </a>
-                <a href="" className="" target="_blank">
-                  <Twitter></Twitter>
-                </a>
-                <a href="" className="" target="_blank">
-                  <Github></Github>
-                </a>
+                {contact.social.data.map((item, key) => (
+                  <a href={item.link} target="_blank">
+                    {item.icon}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
